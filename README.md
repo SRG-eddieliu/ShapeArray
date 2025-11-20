@@ -1,4 +1,4 @@
-# Shape Array (practice scaffold)
+# Shape Array
 
 Small, OOP-focused practice project in Python for working with basic shapes and a collection wrapper.
 
