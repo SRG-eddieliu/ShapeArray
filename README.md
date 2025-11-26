@@ -9,6 +9,10 @@ Small, OOP-focused practice project in Python for working with basic shapes and 
 - `tests/`: pytest coverage for shapes, array, and I/O
 - `__main__.py`: quick demos
 
+## Design
+- Shapes share a common `Shape` ABC, so `ShapeArray` can treat them polymorphically for transforms/metrics.
+- `ShapeArray` is effectively a lightweight Composite: it holds many `Shape` instances and exposes aggregate area/perimeter/transform helpers while keeping shapes decoupled from the collection.
+
 ## Dev setup
 1) Activate your env (e.g., `conda activate shapearray`).
 2) Install test dependency: `python -m pip install -r requirements.txt`
