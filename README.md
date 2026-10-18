@@ -1,13 +1,19 @@
-# Shape Array
+# ShapeArray
 
-Small, OOP-focused practice project in Python for working with basic shapes and a collection wrapper.
+**Starpoint Research Group · Python geometry component**
+
+A small Python software prototype for basic shape interfaces, transformations, aggregate metrics, and JSON/dict serialization.
+
+**Status:** implemented shape and collection components with pytest coverage. The serialization helpers are minimal; this is an early component rather than a production-validated geometry library.
+
+[Package](src/shape_array) · [Shape implementations](src/shape_array/shapes) · [Tests](tests) · [Demo](src/shape_array/__main__.py)
 
 ## Layout
 - `src/shape_array/`: package root exposing `ShapeArray`, `Point`, `Line`, `Circle`
-- `shapes/`: shape types implementing a common interface
-- `io.py`: simple JSON/dict serialization helpers
-- `tests/`: pytest coverage for shapes, array, and I/O
-- `__main__.py`: quick demos
+- `src/shape_array/shapes/`: shape types implementing a common interface
+- `src/shape_array/io.py`: simple JSON/dict serialization helpers
+- `tests/`: pytest coverage for shapes and the collection
+- `src/shape_array/__main__.py`: quick demos
 
 ## Design
 - Shapes share a common `Shape` ABC, so `ShapeArray` can treat them polymorphically for transforms/metrics.
@@ -46,5 +52,5 @@ Total perimeter: 11.283
 ```
 
 ## Notes
-- Intended for practicing OOP patterns in Python only.
+- Current scope is limited to the provided Python shape types and collection operations.
 - Extend `io.py` as needed; current implementations are minimal on purpose.
