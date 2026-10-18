@@ -20,6 +20,8 @@ A small Python software prototype for basic shape interfaces, transformations, a
 - `ShapeArray` is effectively a lightweight Composite: it holds many `Shape` instances and exposes aggregate area/perimeter/transform helpers while keeping shapes decoupled from the collection.
 
 ## Dev setup
+Requires **Python 3.10 or newer** (`dataclass(slots=True)`).
+
 1) Activate your env (e.g., `conda activate shapearray`).
 2) Install test dependency: `python -m pip install -r requirements.txt`
 3) Install in editable mode: `python -m pip install -e .`
@@ -54,3 +56,8 @@ Total perimeter: 11.283
 ## Notes
 - Current scope is limited to the provided Python shape types and collection operations.
 - Extend `io.py` as needed; current implementations are minimal on purpose.
+
+
+## Circle scaling
+
+Circle scaling is about the origin. Equal absolute x/y factors preserve a circle, including reflections such as `scale(-2, 2)`. Unequal magnitudes would produce an ellipse and raise `ValueError`; they are no longer silently treated as uniform scaling. Points and lines continue to support independent x/y factors. Bulk transforms return a new collection; a rejected transform leaves the original collection unchanged.
