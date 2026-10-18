@@ -1,8 +1,10 @@
 # ShapeArray
 
-**Starpoint Research Group · Python geometry component**
+**Starpoint Research Group · Knowledge Hub engineering practice**
 
-A small Python software prototype for basic shape interfaces, transformations, aggregate metrics, and JSON/dict serialization.
+A compact Python engineering reference for basic shape interfaces, transformations, aggregate metrics, and JSON/dict serialization.
+
+**Portfolio role:** Knowledge Hub practice for interfaces, polymorphism, transformations, serialization and testing. Source and development history remain in this repository.
 
 **Status:** implemented shape and collection components with pytest coverage. The serialization helpers are minimal; this is an early component rather than a production-validated geometry library.
 
