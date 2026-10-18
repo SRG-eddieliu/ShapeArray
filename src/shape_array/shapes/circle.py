@@ -33,8 +33,9 @@ class Circle(Shape):
         return Circle(self.center.translate(dx, dy), self.radius_line.translate(dx, dy))
 
     def scale(self, sx: float, sy: float | None = None) -> Circle:
-        # Circle scales uniformly; pick uniform factor from sx (ignore sy if provided)
-        factor = sx
-        scaled_center = self.center.scale(factor, factor)
-        scaled_radius_line = self.radius_line.scale(factor, factor)
-        return Circle(scaled_center, scaled_radius_line)
+        """Scale about the origin; unequal magnitudes would require an ellipse."""
+        if sy is None:
+            sy = sx
+        if abs(sx) != abs(sy):
+            raise ValueError("Circle requires equal absolute scale factors; anisotropic scaling produces an ellipse")
+        return Circle(self.center.scale(sx, sy), self.radius_line.scale(sx, sy))

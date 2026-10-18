@@ -61,3 +61,22 @@ def test_circle_translate_and_scale():
     scaled = circle.scale(2)
     assert scaled.center == Point(0, 0)  # scaling about origin keeps center at origin
     assert scaled.radius == pytest.approx(2.0)
+
+
+@pytest.mark.parametrize("sx,sy", [(2, 3), (0, 1), (-2, 3)])
+def test_circle_rejects_anisotropic_scaling(sx, sy):
+    from shape_array import ShapeArray
+    center = Point(1, 1)
+    circle = Circle(center, Line(center, Point(2, 1)))
+    original = ShapeArray([center, circle])
+    with pytest.raises(ValueError, match="ellipse"):
+        original.scaled(sx, sy)
+    assert original.shapes == [center, circle]
+
+
+@pytest.mark.parametrize("sx,sy", [(2, 2), (-2, 2), (2, -2), (-2, -2), (0, 0)])
+def test_circle_center_and_radius_follow_uniform_or_reflected_scaling(sx, sy):
+    center = Point(1, 1)
+    result = Circle(center, Line(center, Point(2, 1))).scale(sx, sy)
+    assert result.center == center.scale(sx, sy)
+    assert result.radius == pytest.approx(abs(sx))
